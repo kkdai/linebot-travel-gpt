@@ -8,6 +8,22 @@ import (
 	"github.com/line/line-bot-sdk-go/v7/linebot"
 )
 
+const PROMPT_AskLocation = `請問以下的文字包含某個地點嗎？ 如果不是的話，請簡單的回覆我 "NO" 即可。 ---- %s ----`
+const PROMPT_AskDate = `請問以下的文字包含某段時間嗎？ 如果不是的話，請簡單的回覆我 "NO" 即可。 ---- %s ----`
+const PROMPT_AskPeriod = `請問以下的文字包含某段時間嗎？ 如果不是的話，請簡單的回覆我 "NO" 即可。 ---- %s ----`
+const PROMPT_AskPlanning = `你是一個旅行社的員工，協助評估顧客的旅遊景點規劃 。現在我即將去: 
+地點： 
+%s 
+
+期間在: 
+%s
+
+總共天數是:
+%s
+
+%s 又有什麼特殊的節日？
+根據這些節日，有沒有必去的景點規劃? 幫我每一天分開列出。`
+
 func callbackHandler(w http.ResponseWriter, r *http.Request) {
 	events, err := bot.ParseRequest(r)
 
